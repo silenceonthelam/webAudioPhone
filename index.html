@@ -1,0 +1,258 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title>Phone Keyboard</title>
+	<link href='http://fonts.googleapis.com/css?family=Josefin+Slab:700|Josefin+Sans:400' rel='stylesheet' type='text/css'>
+	<style type="text/css">
+		*{padding:0;margin:0;text-decoration:none;list-style:none;}
+		body {
+			background: 
+			    -webkit-radial-gradient(rgba(219,219,219,1),rgba(238,238,238,.5)),
+			url('/patterns/tex2res5.png');
+		}
+		h1 {
+			font: 32px/40px 'Josefin Slab'; font-weight: 700; text-shadow: 0 1px 0 #fff;
+			text-align: center;  margin-top: 40px; color: #444;
+		}
+		#container {
+			width: 290px; margin: 40px auto; padding: 20px 24px; border-radius: 40px;
+			background: -webkit-radial-gradient(#ddd,#e3e3e3);
+			border: 1px solid #e3e3e3;
+			box-shadow: inset 0 0 1px 0 rgba(0,0,0,.15),
+				inset 0 0 10px 1px rgba(0,0,0,.05),
+				0 0 1px 0 rgba(255,255,255,.3),
+				0 0 10px 0 rgba(255,255,255,.3);
+		}
+		li {
+			display: inline-block; margin: 4px; border: 1px solid #d3d3d3; border-radius: 50%; padding: 5px;
+			background: 
+			    -webkit-radial-gradient(50% 48%, 76% 60%, rgba(255,255,255,1) 50%, 
+			    	rgba(255,255,255,0) 60%, rgba(0,0,0,.5) 80%),
+			    -webkit-linear-gradient(#e3e3e3,#fff 12%,#ccc,#222,#666);
+			-webkit-background-clip: padding-box;
+			box-shadow: 
+				inset 0 0 2px 1px rgba(0,0,0,.4),
+				0 0 3px -1px rgba(0,0,0,.5); 
+		}
+		a {
+			display: inline-block; width: 70px; height: 70px; border-radius: 50%; color: #ccc;
+			text-align: center; font: bold 32px/80px 'Josefin Sans';
+			text-shadow: 0 1px 0 #000, 0 -1px 0 #fff;
+			background: -webkit-linear-gradient(#555,#333); 
+			border: 2px solid rgba(255,255,255,.5);
+			box-shadow: inset 0 1px 3px 1px rgba(0,0,0,.5), inset 0 2px 10px 1px rgba(0,0,0,.5), 
+						0 1px 3px 1px rgba(255,255,255,0);
+		}
+
+		/*#speaker {
+			background: 
+			    -webkit-linear-gradient(rgba(255,255,255,.5),rgba(255,255,255,.2),rgba(51,51,51,.5)),
+			    -webkit-radial-gradient(
+			    	50% 50%, 90% 200%,
+			    	rgba(221,221,221,0) 47%, 
+			    	rgba(0,0,0,0) 48%, 
+			    	rgba(0,0,0,1) 49%,
+			    	rgba(255,255,255,1) 50.5%,
+			    	rgba(221,221,221,1) 53%
+			    ),
+				url('/patterns/bo_play_pattern.png');
+			border-radius: 40px;
+			height: 60px; width: 200px; margin: 20px auto;
+			box-shadow: inset 0 1px 5px 2px rgba(0,0,0,.8),
+				inset 0 0 10px 2px rgba(255,255,255,.5);
+			-webkit-transition: 1s;
+		}
+		#speaker:hover {
+			background: 
+			    -webkit-linear-gradient(rgba(255,255,255,.5),rgba(255,255,255,.2),rgba(51,51,51,.5)),
+			    -webkit-radial-gradient(
+			    	50% 50%, .7% 200%,
+			    	rgba(221,221,221,0) 47%, 
+			    	rgba(0,0,0,0) 48%, 
+			    	rgba(0,0,0,1) 49%,
+			    	rgba(255,255,255,1) 50.5%,
+			    	rgba(221,221,221,1) 53%
+			    ),
+				url('/patterns/bo_play_pattern.png');
+			-webkit-transition: 1s;
+		}*/
+
+		#speaker {
+			background: 
+			    -webkit-linear-gradient(
+			    	rgba(102,102,102,.5) 0%,
+			    	rgba(187,187,187,.3) 5%,
+			    	rgba(204,204,204,.3)) 20%,
+			    -webkit-radial-gradient(
+			    	50% 50%, 90% 200%,
+			    	rgba(221,221,221,0) 40%, 
+			    	rgba(221,221,221,1) 60%
+			    );
+			border-radius: 40px;
+			height: 58px; width: 200px; margin: 20px auto;
+			box-shadow: inset 0 1px 3px 1px rgba(0,0,0,.2),
+				inset 0 1px 5px 1px rgba(255,255,255,.8);
+		}
+		.dot {
+			width: 12px; height: 12px; border-radius: 50%;
+			display: inline-block; margin-left: 15px; margin-top: 8px;
+			background: -webkit-linear-gradient(
+				rgba(136,136,136,.1) 72%, rgba(119,119,119,.35)
+			); border: 1px solid #ccc;
+			box-shadow: inset 0 1px 1px 1px rgba(68,68,68,.2),
+				0 1px 1px 0px rgba(255,255,255,.7);
+		}
+		.dot:nth-of-type(1) {
+			margin-left: 25px;
+		}
+		.dot:nth-of-type(6) {
+			margin-left: 25px;
+		}
+		.dot.selected {
+			background: -webkit-linear-gradient(
+				rgba(102,187,87,.4) 72%, rgba(51,187,85,.8)
+			);
+		}
+	</style>
+</head>
+<body>
+
+	<h1>Web Audio Phone</h1>
+	
+	<div id="container">
+		<ul>
+			<li><a href="#">1</a></li>
+			<li><a href="#">2</a></li>
+			<li><a href="#">3</a></li>
+			<li><a href="#">4</a></li>
+			<li><a href="#">5</a></li>
+			<li><a href="#">6</a></li>
+			<li><a href="#">7</a></li>
+			<li><a href="#">8</a></li>
+			<li><a href="#">9</a></li>
+			<li><a href="#">*</a></li>
+			<li><a href="#">0</a></li>
+			<li><a href="#">#</a></li>
+		</ul>
+		<div id="speaker">
+			<div class="dot"></div>
+			<div class="dot"></div>
+			<div class="dot"></div>
+			<div class="dot"></div>
+			<div class="dot"></div>
+			<div class="dot"></div>
+			<div class="dot"></div>
+			<div class="dot"></div>
+			<div class="dot"></div>
+			<div class="dot"></div>
+		</div>
+	</div>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+<script type="text/javascript">
+		
+	$('li').on('mousedown', function() {
+		$('.dot').addClass('selected');
+	});
+
+	$('li').on('mouseup', function() {
+		$('.dot').removeClass('selected');
+	});
+
+	/*
+		1209Hz	1336Hz	1477Hz
+697Hz		1       2       3
+770Hz		4       5       6
+852Hz		7       8       9
+941Hz		*       0       #
+*/
+
+var Keypad = {
+	init: function() {
+		this.cacheEls();
+		this.bindEvents();
+	},
+	cacheEls: function() {
+		this.button = $('#container li');
+		this.ctx = new webkitAudioContext();
+		this.osc1;
+		this.osc2;
+		this.one = [1209,1336,1477];
+		this.two = [697,770,852,941];
+		this.keys1 = [49,50,51,52,53,54,55,56,57,42,48,35];
+		this.num;
+		this.val;
+		this.flag2 = 1;
+		this.doc = $(document);
+	},
+	bindEvents: function() {
+		this.button.on('mousedown', this.handlePlay);
+		this.doc.on('keypress', this.handlePlay);
+		this.button.on('mouseup', this.stop);
+		this.doc.on('keyup', this.stop);
+	},
+	handlePlay: function(e) {
+		var that = Keypad;
+		if (e.type === 'keypress') {
+			that.num = e.keyCode;
+			that.q = that.keys1.indexOf(that.num);
+			while ((that.flag2 === 1 && that.keys1.indexOf(e.keyCode) !== -1))  {
+				that.flag2 = 0;
+				that.play(e);
+			}
+		}
+		else {
+			that.q = $(this).index();
+			that.play(e);
+		}
+	},
+	play: function(e) {
+		var that = Keypad;
+		that.osc1 = that.ctx.createOscillator();
+		that.osc2 = that.ctx.createOscillator();
+
+		var flag = 0,
+			p = 0;
+			i = 0,
+			j = 0,
+			k = 0,
+			one = [1209,1336,1477],
+			two = [697,770,852,941],
+			len1 = one.length,
+			len2 = two.length;
+
+		for (j=0; j<len2; j++) {
+			for (k=0; k<len1; k++) {
+				if (p === that.q) {
+					p++;
+					flag = 1;
+					break;
+				}
+				p++;
+			}
+			if (flag === 1) {
+				console.log('outer: ', p, that.q, ' ', one[k] , two[j]);
+				that.osc1.frequency.value = one[k];
+				that.osc2.frequency.value = two[j];
+				break;
+			}
+		}
+
+		that.osc1.connect(that.ctx.destination);
+		that.osc2.connect(that.ctx.destination);
+		that.osc1.noteOn(0);
+		that.osc2.noteOn(0);
+	},
+	stop: function() {
+		var that = Keypad;
+		that.osc1.noteOff(0);
+		that.osc2.noteOff(0);
+		that.flag2 = 1;
+	}
+};
+
+Keypad.init();
+
+</script>
+</body>
+</html>
